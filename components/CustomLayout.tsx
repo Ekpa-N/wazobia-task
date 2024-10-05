@@ -10,7 +10,7 @@ type CustomLayoutProps = {
 }
 export default function CustomLayout({ children }: CustomLayoutProps) {
     const [isFocused, setIsFocused] = useState<boolean>(false)
-    const [embedModal, setEmbedModal] = useState<{ type: string, isOpen: boolean }>({ type: "video", isOpen: true })
+    const [embedModal, setEmbedModal] = useState<{ type: string, isOpen: boolean }>({ type: "", isOpen: false })
     const [imageString, setImageString] = useState<string | ArrayBuffer | null>("")
     const [embedTabList, setEmbedTabList] = useState<boolean>(false)
     const editorRef = useRef<HTMLDivElement>(null)
