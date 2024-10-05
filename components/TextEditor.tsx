@@ -14,6 +14,7 @@ import Youtube from '@tiptap/extension-youtube'
 import EmbedTab from './EmbedTabs'
 import * as constantVariables from "@/lib/constantVariables"
 import AppContext from './ContextProvider'
+import CharacterCount from '@tiptap/extension-character-count'
 
 type TextEditorProps = {
     handleFocus: () => void;
@@ -23,7 +24,10 @@ type TextEditorProps = {
     embedModal: { isOpen: boolean, type: string };
     imageString: string;
     handleImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleWordCount: (count: string | number) => void;
 }
+
+const limit = 1000
 
 const extensions = [
     StarterKit,
@@ -46,10 +50,13 @@ const extensions = [
         controls: false,
         nocookie: true,
     }),
+    CharacterCount.configure({
+        limit,
+    })
     // ImageResize
 ]
 
-export default function TextEditor({ handleFocus, isFocused, isOpen, layoutRef, embedModal, handleImageUpload, imageString }: TextEditorProps) {
+export default function TextEditor({ handleFocus, isFocused, isOpen, layoutRef, embedModal, handleImageUpload, imageString, handleWordCount }: TextEditorProps) {
     const [editorInitialized, setEditorInitialized] = useState(false)
     const [editorHeight, setEditorHeight] = useState(100)
     const [height, setHeight] = useState(323)
@@ -94,7 +101,7 @@ export default function TextEditor({ handleFocus, isFocused, isOpen, layoutRef, 
         const docContent = editor.state.doc;
         const lastNode = docContent.lastChild;
         // debugger
-        
+
         if (lastNode?.type.name === 'image' || lastNode?.type.name === 'youtube') {
             editor.commands.focus();
             editor.commands.setTextSelection(docContent.content.size)
@@ -152,6 +159,10 @@ export default function TextEditor({ handleFocus, isFocused, isOpen, layoutRef, 
                                 </div>
 
                             </ul>
+                            {/* {editor?.storage.characterCount.characters()}/{limit} words */}
+                        </div>
+                        <div className="h-[27px] border-t border-[#E7F1E9] text-[10px] pr-[14px] bg-[#FFFFFF] flex items-center justify-end text-right text-[#343E37]">
+                        {editor?.storage.characterCount.characters()}/{limit} words
                         </div>
                     </>
                 )

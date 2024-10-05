@@ -16,10 +16,15 @@ export default function CustomLayout({ children }: CustomLayoutProps) {
     const editorRef = useRef<HTMLDivElement>(null)
     const layoutRef = useRef<HTMLInputElement>(null)
     const embedButtonRef = useRef<HTMLButtonElement>(null)
+    const [wordCount, setWordCount] = useState<string | number>("")
 
     function handleEmbedTab() { }
     function handleEmbedTabList() {
         setEmbedTabList(!embedTabList)
+    }
+
+    function handleWordCount(count: string | number) {
+        setWordCount(count)
     }
 
     useEffect(() => {
@@ -67,7 +72,7 @@ export default function CustomLayout({ children }: CustomLayoutProps) {
 
 
     return (
-        <AppContext.Provider value={{ handleFocus, layoutRef, isFocused, editorRef, embedModal, handleImageUpload, imageString, handleEmbedModal, embedButtonRef, embedTabList, handleEmbedTabList }}>
+        <AppContext.Provider value={{ handleFocus, layoutRef, isFocused, editorRef, embedModal, handleImageUpload, imageString, handleEmbedModal, embedButtonRef, embedTabList, handleEmbedTabList, handleWordCount }}>
             <div ref={layoutRef} className="w-full h-full overflow-x-hidden relative">
                 {children}
             </div>
