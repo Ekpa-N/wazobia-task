@@ -14,7 +14,7 @@ type EmbedTabProps = {
 export default function EmbedTab({ icon, title, formats, type, onClick }: EmbedTabProps) {
     const formatList = formats.join(", ")
     return (
-        <li onClick={()=>{onClick(true, type)}} className="flex pl-[10px] borde pt-[5px] cursor-pointer gap-[5px] h-[46px] w-full hover:bg-[#F7FCF8]">
+        <li onClick={()=>{onClick(true, type)}} className="flex pl-[10px] borde pt-[5px] cursor-pointer gap-[5px] h-[46px] w-full hover:bg-[#E7F1E9]">
             <div className="borde pt-[2px]">
                 {icon}
             </div>

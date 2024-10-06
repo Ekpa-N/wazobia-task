@@ -6,7 +6,6 @@ import AppContext from "./ContextProvider";
 
 type EmbedContainerProps = {
     embedModal: { type: string, isOpen: boolean };
-    // fileInputRef: React.RefObject<HTMLInputElement>;
     handleImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
     imageString: string | null | ArrayBuffer;
     embedImage: () => void;
@@ -14,11 +13,11 @@ type EmbedContainerProps = {
 }
 
 export default function EmbedContainer({ embedModal, handleImageUpload, imageString, embedImage, embedVideo }: EmbedContainerProps) {
-    const [videourl, setVideourl] = useState<{provider: string, url: string}>({provider:"", url:""})
+    const [videourl, setVideourl] = useState<{ provider: string, url: string }>({ provider: "", url: "" })
     const fileInputRef = useRef<HTMLInputElement>(null)
 
     function handleUrlInputChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
-        setVideourl({...videourl, [e.target.name]: e.target.value})
+        setVideourl({ ...videourl, [e.target.name]: e.target.value })
     }
 
 
@@ -80,7 +79,7 @@ export default function EmbedContainer({ embedModal, handleImageUpload, imageStr
                                 <>
                                     <label className="mt-[16px] text-[10px]">FILE UPLOAD</label>
                                     <select
-                                        onChange={(e)=>{handleUrlInputChange(e)}}
+                                        onChange={(e) => { handleUrlInputChange(e) }}
                                         name="provider"
                                         value={videourl.provider}
                                         className="pl-[5px] text-[12px] text-[#343E37] outline-none border border-[#E7F1E9] bg-[#FAFAFA] h-[34px] rounded-[4px]"
@@ -96,7 +95,7 @@ export default function EmbedContainer({ embedModal, handleImageUpload, imageStr
                                         ))}
                                     </select>
                                     <label htmlFor="url" className="mt-[16px] text-[10px]">URL</label>
-                                    <input value={videourl.url} onChange={(e)=>{handleUrlInputChange(e)}} name="url" className="pl-[5px] text-[12px] text-[#343E37] outline-none border border-[#E7F1E9] bg-[#FAFAFA] h-[34px] rounded-[4px]" />
+                                    <input value={videourl.url} onChange={(e) => { handleUrlInputChange(e) }} name="url" className="pl-[5px] text-[12px] text-[#343E37] outline-none border border-[#E7F1E9] bg-[#FAFAFA] h-[34px] rounded-[4px]" />
                                 </>
                             )}
 

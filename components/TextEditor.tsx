@@ -125,7 +125,7 @@ export default function TextEditor({ handleFocus, isFocused, isOpen, layoutRef, 
                             <EmbedContainer embedVideo={embedVideo} embedModal={embedModal} handleImageUpload={handleImageUpload} imageString={imageString} embedImage={embedImage} />,
                             layoutRef.current as HTMLDivElement
                         )}
-                        <div className={`border h-full flex flex-col p-0 `}>
+                        <div className={`borde h-full flex flex-col p-0 `}>
                             <div className={`h-[45px] borde ml-[16px] flex items-center`}>
                                 <FormatBar editor={editor} isFocused={isFocused} />
                             </div>
@@ -159,10 +159,9 @@ export default function TextEditor({ handleFocus, isFocused, isOpen, layoutRef, 
                                 </div>
 
                             </ul>
-                            {/* {editor?.storage.characterCount.characters()}/{limit} words */}
                         </div>
-                        <div className="h-[27px] border-t border-[#E7F1E9] text-[10px] pr-[14px] bg-[#FFFFFF] flex items-center justify-end text-right text-[#343E37]">
-                        {editor?.storage.characterCount.characters()}/{limit} words
+                        <div className="h-[27px] border border-[#E7F1E9] text-[10px] pr-[14px] bg-[#FFFFFF] flex items-center justify-end text-right text-[#343E37]">
+                            {editor?.storage.characterCount.characters()}/{limit} words
                         </div>
                     </>
                 )

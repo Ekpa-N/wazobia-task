@@ -18,7 +18,6 @@ export default function CustomLayout({ children }: CustomLayoutProps) {
     const embedButtonRef = useRef<HTMLButtonElement>(null)
     const [wordCount, setWordCount] = useState<string | number>("")
 
-    function handleEmbedTab() { }
     function handleEmbedTabList() {
         setEmbedTabList(!embedTabList)
     }
@@ -31,7 +30,6 @@ export default function CustomLayout({ children }: CustomLayoutProps) {
         const handleClick = (event: MouseEvent) => {
             if (editorRef.current && editorRef.current.contains(event.target as Node)) {
                 setIsFocused(true)
-                // console.log("embed button: ", embedButtonRef)
             } else {
                 setIsFocused(false)
                 setEmbedTabList(false)
@@ -52,7 +50,6 @@ export default function CustomLayout({ children }: CustomLayoutProps) {
 
     async function handleImageUpload(event: React.ChangeEvent<HTMLInputElement>) {
         const file = event.target.files?.[0]
-
         if (file) {
             try {
                 const imageString = await helpers.imageToString(file)
